@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Using Google Maps</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>My buttons</h1>
+        <button id="show-markers">Show Markers</button>
+        <button id="hide-markers">Hide Markers</button>
+        <br>
+        <br>
+        <span>Use this tool to draw the area you want to search</span>
+        <input id="toggle-drawing" type="button" value="Drawing Tool">
+    </div>
+
+    <div id="map-container">
+        <div id="map"></div>           
+    </div>
+
+    <script src="scripts/map.js"></script>
+    <script>
+   
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyDq6WjLcfMSZ-bWYxkRr-EZ8NbcioNfzYE&v=3&callback=initMap">
+    </script>
+</body>
+
+</html>
