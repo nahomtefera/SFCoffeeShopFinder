@@ -4,18 +4,35 @@
         <link rel="stylesheet" href="css/app.css">
         <!-- Normalize css -->
         <link rel="stylesheet" href="css/normalize.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
     </head>
     
     <body>
         <div class="container">
+            <br>
+            <br>
+            <div id="list-container">
+                <input data-bind="textInput: filter()" type="text" id="search-box">
+                <ul data-bind="foreach: listedBusiness" id="list-ul">
+                    <li data-bind="text: name"></li>
+                </ul>
+
+
+                <!-- <button data-bind="click: filter()">Hey</button> -->
+            </div>
+            
+            <br>
+            <span>Draw Search Area</span>
+            <input id="toggle-drawing" type="button" value="Drawing Tool">
+            <br>
+            <br>
             <h1>My buttons</h1>
             <button id="show-markers">Show Markers</button>
             <button id="hide-markers">Hide Markers</button>
-            <br>
-            <br>
-            <span>Use this tool to draw the area you want to search</span>
-            <input id="toggle-drawing" type="button" value="Drawing Tool">
+
+            
         </div>
     
         <div id="map-container">
@@ -25,6 +42,8 @@
         <!-- Scripts -->
         <!-- Knockoutjs --><script src="scripts/knockout.js"></script> 
         <!-- Main script --><script src="scripts/app.js"></script>
+        <!-- Main script --><script src="scripts/yelpAPI.js"></script>
+
         <!-- Knockout ViewModel --><script src="scripts/viewModel.js"></script> 
 
         

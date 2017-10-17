@@ -6,6 +6,20 @@ body {
     width: 100%;
 }
 
+#search-box {
+    width: 100%;
+}
+
+#list-ul {
+    width: 100%;
+    text-align: left;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
 #map-container {
     height: 100%;
     width: 70%;
