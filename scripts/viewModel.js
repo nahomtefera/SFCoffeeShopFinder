@@ -24,7 +24,6 @@ let viewModel = function appViewModel() {
         for(let i = 0; i < self.businessToRender().length; i++) {
             let currentItem = self.businessToRender()[i];
             if(currentItem.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1){
-                console.log(currentItem);
                 self.listedBusiness.push(
                     {
                         name: ko.observable(currentItem)
@@ -45,7 +44,6 @@ let viewModel = function appViewModel() {
                 
             }
         }
-        console.log("\n")
         
     }
     
