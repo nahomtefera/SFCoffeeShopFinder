@@ -32,11 +32,19 @@ let viewModel = function appViewModel() {
         for(let i = 0; i < self.itemsToRender().length; i++) {
             let currentItem = self.itemsToRender()[i];
             let currentItemName = currentItem.venue.name;
-
-            if(currentItemName.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1){
+            let currentItemId = currentItem.venue.id;
+            let currentItemAddress = currentItem.venue.location.address;
+            let currentItemRating = currentItem.venue.rating;
+            let currentIsOpen = currentItem.venue.hours.status;
+            
+            if(currentItemName.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 || currentItemAddress.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 ){
                 self.listedItems.push(
                     {
-                        name: ko.observable(currentItemName)
+                        name: ko.observable(currentItemName),
+                        address: currentItemAddress,
+                        id: currentItemId,
+                        rating: currentItemRating,
+                        time: currentIsOpen
                     }
                 );
             } else {
@@ -54,8 +62,16 @@ let viewModel = function appViewModel() {
             }
             console.log(self.listedItems);
         }
+    };
+
+    this.openMarker = function() {
+        // console.log();
+        for (let i = 0; i < markers.length; i++){
+            if(this.id === markers[i].id){
+                markers[i].setMap(map);
+            }
+        }
     }
     
-
     console.log(this.businessToRender());
 }

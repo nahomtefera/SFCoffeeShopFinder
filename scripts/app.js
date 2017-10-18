@@ -151,19 +151,20 @@ function initMap(){
 
     // 6. Now we will create a new array inside a for loopand we will push inside the locations we want to render with markers
     for (let i = 0; i < items.length; i++){
-        let marker, position, title;
+        let marker, position, title, id;
         // Get position and title for each location
         position = {
             lat: items[i].venue.location.lat,
             lng: items[i].venue.location.lng
         };
         title = items[i].venue.name;
+        id = items[i].venue.id;
         // create a new marker per each location
         marker = new google.maps.Marker({
             position: position,
             title: title,
             animation: google.maps.Animation.DROP,
-            id: i
+            id: id
         });
         // push every marker to an array
         markers.push(marker);
@@ -222,7 +223,7 @@ function populateInfoWindow(marker, infoWindow){
         infoWindow.marker = marker;
         // Make sure the marker property is cleared if the infowindow is closed.
         infoWindow.addListener('closeclick', function() {
-        infoWindow.marker = null;
+            infoWindow.marker = null;
         });
         // We are going to request a street view image to add it to the InfoWindow
         let streetViewService = new google.maps.StreetViewService();

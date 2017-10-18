@@ -4,20 +4,127 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
+
+
 #search-box {
+    /* width: calc(100% - 18px); */
     width: 100%;
+    float: left;
+    border: 1px solid #f7f7f7;    
+    padding: 10px;
+    font-family: Roboto;
+    font-weight: 300;
+}
+
+#search-box:focus {
+    border: 1px solid #88c1ce;
+}
+
+#container {
+    max-height: 100%;    
+    overflow: hidden;
+}
+
+#list-container {
+    overflow: hidden;
 }
 
 #list-ul {
     width: 100%;
     text-align: left;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    max-height: 100%;
+    padding-right: 18px;
+    overflow-x: hidden;
+}
+
+#show-hide-markers-container {
+    padding: 0px;
+    text-align: center;
+    height: 30px;    
+    line-height: 30px;
+    width: 100%;
+    overflow: auto;
+}
+
+.show-hide {
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+#show-markers:hover {
+    background: cadetblue;
+    color: white;
+}
+
+#hide-markers:hover {
+    background: tomato;
+    color: white;
+}
+
+#show-markers {
+    float: left;
+    color: cadetblue;
+}
+
+#hide-markers {
+    float: right;
+    color: tomato;
 }
 
 li {
     text-decoration: none;
     list-style: none;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    border: 1px solid #f5f5f5;
+    padding: 5px;
+    padding-left: 20px;
+    width: 100%;
+    overflow: auto;
+}
+
+li:hover {
+    background: #e2ffcc;
+}
+
+li a{
+    color: #1a7d9b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+li a:visited {
+    color: #1a7d9b;
+}
+
+.info-container {
+    float: left;
+}
+
+.rating-container {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 2px solid #ff8771;
+    border-radius: 50%;
+    float: right;
+    margin-right: 18px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: cadetblue;
 }
 
 #map-container {
@@ -29,12 +136,12 @@ li {
 }
 
 #map {
-    height: 80%;
+    height: 100%;
     display: inline-block;
-    width: 90%;
-    margin-top: 50px;
-    border-radius: 15px;
-    border: 2px solid #eee;
+    width: 100%;
+    /* margin-top: 50px; */
+    /* border-radius: 15px; */
+    /* border: 2px solid #eee; */
 }
 
 .container {
@@ -47,4 +154,13 @@ li {
 
 #pano {
     height: 150px;
+}
+
+.rating {
+    color: #ea9841;
+}
+
+.address, .time{
+    font-size: 0.9em;
+    margin-left: 9px;
 }
