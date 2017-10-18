@@ -128,8 +128,8 @@ function initMap(){
     ];
     // 1. First we initialize the map in the div assigned to the map
     map = new google.maps.Map(document.getElementById("map"), {
-        center: {lat: 40.7413549, lng: -73.9980244},
-        zoom: 13,
+        center: {lat: 37.7449, lng: -122.4194},
+        zoom: 12,
         styles: style,
         mapTypeControl: false
     });
@@ -143,7 +143,9 @@ function initMap(){
         {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
         {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
     ];
-
+    console.log(locations);
+    console.log(items)
+    
     // 5. Create a variable that will be the popout info window
     let popupInfoWindow = new google.maps.InfoWindow();
 
