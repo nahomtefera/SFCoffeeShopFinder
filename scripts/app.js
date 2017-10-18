@@ -134,18 +134,7 @@ function initMap(){
         mapTypeControl: false
     });
 
-    // 4. Create the variable locations and push the location that are going to be rendered.
-    let locations = [
-        {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
-        {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
-        {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
-        {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
-        {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
-        {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
-    ];
-    // console.log(locations);
-    console.log(items)
-    
+    // 4. Create the variable locations and push the location that are going to be rendered.    
     // 5. Create a variable that will be the popout info window
     let popupInfoWindow = new google.maps.InfoWindow();
     let lastPopupInfoWindow;
@@ -246,12 +235,12 @@ function populateInfoWindow(marker, infoWindow){
                 let nearStreetViewLocation = data.location.latLng;
                 let heading = google.maps.geometry.spherical.computeHeading(
                     nearStreetViewLocation, marker.position);
-
+                // add a div with the name and address in the infoWindow
                 infoWindow.setContent('<div class="marker-title">' + marker.title + 
                     "<br/>" + "</div>" + "<div class='marker-address'>" + 
                     marker.address + "</div>" + '</div><div id="pano"></div>'
                 );
-                
+                // 
                 let panoramaOptions = {
                     position: nearStreetViewLocation,
                     pov: {
@@ -293,7 +282,6 @@ function hideMarkers(){
 // Function to toggle Drawing functionality
 function toggleDrawing(drawingManager){
     if (drawingManager.map) {
-        console.log(drawingManager.map)
         drawingManager.setMap(null);
         // In case the user drew anything, get rid of the polygon
         if (polygon !== null) {
