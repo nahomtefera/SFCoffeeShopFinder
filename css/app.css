@@ -11,10 +11,15 @@ body {
 
 #search-box {
     /* width: calc(100% - 18px); */
+    background-image: url(../images/search-icon.png);
+    background-position: 5px 10px;
+    background-repeat: no-repeat;
+    background-size: 17px;
     width: 100%;
     float: left;
-    border: 1px solid #f7f7f7;    
+    border: 1px solid #f7f7f7;
     padding: 10px;
+    padding-left: 33px;
     font-family: Roboto;
     font-weight: 300;
 }
@@ -30,6 +35,8 @@ body {
 
 #list-container {
     overflow: hidden;
+    box-sizing: border-box;
+    border-right: 4px solid #d2d2d2;
 }
 
 #list-ul {
@@ -50,11 +57,13 @@ body {
     line-height: 30px;
     width: 100%;
     overflow: auto;
+    border-bottom: 2px solid lightblue;    
+    
 }
 
 .show-hide {
     text-align: center;
-    width: 50%;
+    width: calc(50% - 4px);
     height: 100%;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
@@ -75,7 +84,7 @@ body {
 
 #show-markers {
     float: left;
-    color: cadetblue;
+    color: cadetblue;    
 }
 
 #hide-markers {
@@ -99,6 +108,27 @@ li:hover {
     background: #e2ffcc;
 }
 
+li:hover  .name {
+    color: #082a6b;    
+}
+
+li:hover .address {
+    color: #111;
+}
+
+li:hover .time {
+    color: #111;
+}
+
+li:hover .rating-container {
+    border-color: #ff3e1a;
+    color: #ff3e1a;
+}
+
+li:hover .rating {
+    color: #ff3e1a;
+}
+
 li a{
     color: #1a7d9b;
     text-decoration: none;
@@ -114,14 +144,15 @@ li a:visited {
 }
 
 .rating-container {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
     text-align: center;
     border: 2px solid #ff8771;
     border-radius: 50%;
     float: right;
-    margin-right: 18px;
+    margin-right: 25px;
+    margin-top:  10px;
     font-family: "Roboto";
     font-weight: bold;
     color: cadetblue;
@@ -158,9 +189,19 @@ li a:visited {
 
 .rating {
     color: #ea9841;
+    font-size: 13px;
 }
 
 .address, .time{
     font-size: 0.9em;
     margin-left: 9px;
+    font-weight: 300;
+    color: #555
 }
+
+/* .address:hover, .time:hover {
+    font-size: 0.9em;
+    margin-left: 9px;
+    font-weight: bold;
+    color: #111
+} */

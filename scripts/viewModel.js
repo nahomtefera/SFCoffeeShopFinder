@@ -37,7 +37,7 @@ let viewModel = function appViewModel() {
             let currentItemRating = currentItem.venue.rating;
             let currentIsOpen = currentItem.venue.hours.status;
             
-            if(currentItemName.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 || currentItemAddress.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 ){
+            if(currentItemName.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 || (currentItemAddress) && currentItemAddress.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 ){
                 self.listedItems.push(
                     {
                         name: ko.observable(currentItemName),

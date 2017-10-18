@@ -8,7 +8,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        
     </head>
     
     <body>
@@ -16,14 +15,14 @@
 
             <div id="list-container">
                 <div>
-                    <input data-bind="textInput: filter()" type="text" id="search-box" placeholder="           What are you looking for?">
+                    <input data-bind="textInput: filter()" type="text" id="search-box" placeholder=" .. Search the Best Coffe Shops">
                 </div>
                 <div id="show-hide-markers-container">
-                        <div class="show-hide" id="show-markers">Display Every Pin</div>
-                        <div class="show-hide" id="hide-markers">Hide Every Pin</div>
+                        <div class="show-hide" id="show-markers">Display All</div>
+                        <div class="show-hide" id="hide-markers">Hide All</div>
                 </div>
                 <ul data-bind="foreach: listedItems" id="list-ul">
-                    <li data-bind="click: $parent.openMarker">
+                    <li class="items" data-bind="click: $parent.openMarker">
                         <div class="info-container">
                             <a class="name" href="#"data-bind="text: name"></a>
                             <br>
