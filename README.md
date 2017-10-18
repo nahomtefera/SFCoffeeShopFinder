@@ -12,7 +12,7 @@ In order to install it in your computer clone it with git and open index.html fi
 
 ```
 git clone https://github.com/nahomtefera/nahomtefera.github.io.git
-cd Neighborhood_Map_Project
+cd SFCoffeeShopFinder
 start index.html
 ```
 
