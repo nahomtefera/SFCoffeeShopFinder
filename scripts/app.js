@@ -161,7 +161,7 @@ function initMap(){
         // push every marker to an array
         markers.push(marker);
         // create and event listener to open an info window on click
-        marker.addListener('click', createMarkerPopup());
+        marker.addListener('click', createMarkerPopup);
     }
 
     function createMarkerPopup(){
