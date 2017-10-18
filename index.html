@@ -8,18 +8,31 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
     </head>
     
     <body>
+            
+            <div id="map-container">
+                    <div id="map"></div>           
+                </div>  
         <div class="container">
 
             <div id="list-container">
                 <div>
-                    <input data-bind="textInput: filter()" type="text" id="search-box" placeholder=" .. Search the Best Coffe Shops">
+                    <input data-bind="textInput: filter()" type="text" id="search-box" placeholder=" .. Search SF Coffe Shops">
                 </div>
                 <div id="show-hide-markers-container">
-                        <div class="show-hide" id="show-markers">Display All</div>
-                        <div class="show-hide" id="hide-markers">Hide All</div>
+                    <div class="show-hide" id="show-markers">Display All</div>
+                    <div class="show-hide" id="hide-markers">Hide All</div>
+                </div>
+                <div id="foursquare-mention">
+                    <a target="blank" href="https://foursquare.com">
+                        <img id="foursquare-logo" src="images/foursquare-logo.png" alt="">
+                        Results provided by Foursquare 
+                    </a>
                 </div>
                 <ul data-bind="foreach: listedItems" id="list-ul">
                     <li class="items" data-bind="click: $parent.openMarker">
@@ -54,10 +67,7 @@
 
             
         </div>
-    
-        <div id="map-container">
-            <div id="map"></div>           
-        </div>
+
 
         <div id="mapa"></div>           
         

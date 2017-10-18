@@ -1,6 +1,7 @@
 let allBusinesses = ['The great Pizza', 'Five Guys', 'Nick the Greek', 'Abesha Restaurant', 'Amigo Mio' ];
 let searchBox = document.getElementById("search-box");
 let ulList = document.getElementById("list-ul");
+let lastOpenedInfoWindow;
 
 let viewModel = function appViewModel() {
     console.log("Hey I'm inside viewModel");
@@ -64,11 +65,20 @@ let viewModel = function appViewModel() {
         }
     };
 
+let lastPopupWindow;
+let newPopUpWindow = new google.maps.InfoWindow()
+
     this.openMarker = function() {
         // console.log();
+        if(lastPopupWindow) {
+            lastPopupWindow().close();
+        }
+
         for (let i = 0; i < markers.length; i++){
             if(this.id === markers[i].id){
                 markers[i].setMap(map);
+                populateInfoWindow(markers[i],  newPopUpWindow);
+                lastPopupWindow = populateInfoWindow(markers[i], newPopUpWindow);
             }
         }
     }

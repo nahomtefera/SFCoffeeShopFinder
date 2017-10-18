@@ -148,10 +148,11 @@ function initMap(){
     
     // 5. Create a variable that will be the popout info window
     let popupInfoWindow = new google.maps.InfoWindow();
+    let lastPopupInfoWindow;
 
     // 6. Now we will create a new array inside a for loopand we will push inside the locations we want to render with markers
     for (let i = 0; i < items.length; i++){
-        let marker, position, title, id;
+        let marker, position, title, id, address;
         // Get position and title for each location
         position = {
             lat: items[i].venue.location.lat,
@@ -159,10 +160,12 @@ function initMap(){
         };
         title = items[i].venue.name;
         id = items[i].venue.id;
+        address = items[i].venue.location.address
         // create a new marker per each location
         marker = new google.maps.Marker({
             position: position,
             title: title,
+            address:address,
             animation: google.maps.Animation.DROP,
             id: id
         });
@@ -170,7 +173,14 @@ function initMap(){
         markers.push(marker);
         // create and event listener to open an info window on click
         marker.addListener('click', function(){
+            if(lastPopupInfoWindow){
+                lastPopupInfoWindow().close();
+            }
+            if(newPopUpWindow){
+                lastPopupWindow().close();
+            }
             populateInfoWindow(this, popupInfoWindow)
+            lastPopupInfoWindow = populateInfoWindow(this, popupInfoWindow);
         });
     }
     //
@@ -237,7 +247,10 @@ function populateInfoWindow(marker, infoWindow){
                 let heading = google.maps.geometry.spherical.computeHeading(
                     nearStreetViewLocation, marker.position);
 
-                infoWindow.setContent('<div>' + marker.title + "<br/>" + marker.position + "<br/>" + '</div><div id="pano"></div>');
+                infoWindow.setContent('<div class="marker-title">' + marker.title + 
+                    "<br/>"+ marker.address + "<br/>" + 
+                    "<br/>" + '</div><div id="pano"></div>'
+                );
                 
                 let panoramaOptions = {
                     position: nearStreetViewLocation,
@@ -248,7 +261,7 @@ function populateInfoWindow(marker, infoWindow){
                 };
                 let panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
                 } else {
-                    infoWindow.setContent('<div>' + marker.title + "<br/>" + marker.position + "<br/>" + ' No StreetView Found</div>');
+                    infoWindow.setContent('<div>' + marker.title + "<br/>" + "<br/>" + ' No StreetView Found</div>');
                 }
         }
         // We will use  StreetView service to get the closest streetView image

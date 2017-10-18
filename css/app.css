@@ -39,6 +39,11 @@ body {
     border-right: 4px solid #d2d2d2;
 }
 
+.marker-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
 #list-ul {
     width: 100%;
     text-align: left;
@@ -59,6 +64,30 @@ body {
     overflow: auto;
     border-bottom: 2px solid lightblue;    
     
+}
+
+#foursquare-mention {
+    overflow: auto;
+    padding: 4px;
+    height: 25px;
+    line-height: 25px;
+    font-family: "Roboto";
+    font-size: 12px;
+    border-bottom: 1px solid lightblue;    
+}
+
+.marker-title {
+    min-width: 170px;
+}
+
+#foursquare-mention a, #foursquare-mention a:visited {
+    text-decoration: none;
+    color: cadetblue;
+}
+
+#foursquare-logo {
+    max-width: 15px;
+    border-radius: 5px;
 }
 
 .show-hide {
@@ -205,3 +234,14 @@ li a:visited {
     font-weight: bold;
     color: #111
 } */
+
+@media only screen and (max-width: 768px) {
+    #map-container {
+        width: 100%;
+        height: 45%;    
+    }
+
+    .container {
+        width: 100%;        
+    }
+}
