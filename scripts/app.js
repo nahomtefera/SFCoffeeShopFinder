@@ -143,18 +143,21 @@ function initMap(){
         {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
         {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
     ];
-    console.log(locations);
+    // console.log(locations);
     console.log(items)
     
     // 5. Create a variable that will be the popout info window
     let popupInfoWindow = new google.maps.InfoWindow();
 
     // 6. Now we will create a new array inside a for loopand we will push inside the locations we want to render with markers
-    for (let i = 0; i < locations.length; i++){
+    for (let i = 0; i < items.length; i++){
         let marker, position, title;
         // Get position and title for each location
-        position = locations[i].location;
-        title = locations[i].title;
+        position = {
+            lat: items[i].venue.location.lat,
+            lng: items[i].venue.location.lng
+        };
+        title = items[i].venue.name;
         // create a new marker per each location
         marker = new google.maps.Marker({
             position: position,
