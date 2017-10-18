@@ -256,7 +256,7 @@ function populateInfoWindow(marker, infoWindow){
                 } else {
                     infoWindow.setContent('<div>' + marker.title + "<br/>" + "<br/>" + ' No StreetView Found</div>');
                 }
-        }
+        };
         // We will use  StreetView service to get the closest streetView image
         // within 50m of the location
         streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
