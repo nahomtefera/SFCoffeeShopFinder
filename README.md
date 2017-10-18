@@ -1,5 +1,4 @@
 # SF Coffee Shop Finder - Nanodegree project
-===============================
 
 Final Nanodegree project.
 

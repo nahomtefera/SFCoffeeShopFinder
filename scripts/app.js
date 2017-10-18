@@ -173,7 +173,7 @@ function initMap(){
         }
         populateInfoWindow(this, popupInfoWindow);
         lastPopupInfoWindow = populateInfoWindow(this, popupInfoWindow);
-    };
+    }
     //
     // 11. We are also going to create a functino to draw in our map `drawingManager()`
     //
@@ -218,6 +218,8 @@ function initMap(){
     
 }
 // 8. Create the function that will create the infoWindow
+let getStreetView = function(){};
+
 function populateInfoWindow(marker, infoWindow){
     // Check to make sure the infowindow is not already opened on this marker.
     if (infoWindow.marker != marker) {
@@ -232,7 +234,7 @@ function populateInfoWindow(marker, infoWindow){
         //
         // 10. We will also create a function to pop up Street Viw imagery, `getStreetView`
         //
-        function getStreetView(data, status){
+        getStreetView = function(data, status){
             if(status == google.maps.StreetViewStatus.OK) {
                 let nearStreetViewLocation = data.location.latLng;
                 let heading = google.maps.geometry.spherical.computeHeading(
@@ -260,9 +262,9 @@ function populateInfoWindow(marker, infoWindow){
         streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
 
         // Open InfoWindow in the correct marker
-        infoWindow.open(map, marker)
+        infoWindow.open(map, marker);
     }
-};
+}
 // 9. Create the functions that will display and hide the infoWindow
 // This function will loop through every marker and display them all
 function showMarkers(){
@@ -271,15 +273,15 @@ function showMarkers(){
     for (let i = 0; i < markers.length; i++){
         markers[i].setMap(map);
         bounds.extend(markers[i].position);
-    };
+    }
     map.fitBounds(bounds);    
-};
+}
 
 function hideMarkers(){
     for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null)
+        markers[i].setMap(null);
       }
-};
+}
 
 // Function to toggle Drawing functionality
 function toggleDrawing(drawingManager){
