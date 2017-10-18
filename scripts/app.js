@@ -149,7 +149,7 @@ function initMap(){
         };
         title = items[i].venue.name;
         id = items[i].venue.id;
-        address = items[i].venue.location.address
+        address = items[i].venue.location.address;
         // create a new marker per each location
         marker = new google.maps.Marker({
             position: position,
@@ -161,17 +161,19 @@ function initMap(){
         // push every marker to an array
         markers.push(marker);
         // create and event listener to open an info window on click
-        marker.addListener('click', function(){
-            if(lastPopupInfoWindow){
-                lastPopupInfoWindow().close();
-            }
-            if(newPopUpWindow){
-                lastPopupWindow().close();
-            }
-            populateInfoWindow(this, popupInfoWindow)
-            lastPopupInfoWindow = populateInfoWindow(this, popupInfoWindow);
-        });
+        marker.addListener('click', createMarkerPopup());
     }
+
+    function createMarkerPopup(){
+        if(lastPopupInfoWindow){
+            lastPopupInfoWindow().close();
+        }
+        if(newPopUpWindow){
+            lastPopupWindow().close();
+        }
+        populateInfoWindow(this, popupInfoWindow);
+        lastPopupInfoWindow = populateInfoWindow(this, popupInfoWindow);
+    };
     //
     // 11. We are also going to create a functino to draw in our map `drawingManager()`
     //
@@ -228,7 +230,7 @@ function populateInfoWindow(marker, infoWindow){
         let streetViewService = new google.maps.StreetViewService();
         let radius = 50;
         //
-        // 10. We will also create a function to pop up Street Viw imagery, `getStreetView()`
+        // 10. We will also create a function to pop up Street Viw imagery, `getStreetView`
         //
         function getStreetView(data, status){
             if(status == google.maps.StreetViewStatus.OK) {
@@ -258,7 +260,7 @@ function populateInfoWindow(marker, infoWindow){
         streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
 
         // Open InfoWindow in the correct marker
-        infoWindow.open(map, marker);
+        infoWindow.open(map, marker)
     }
 };
 // 9. Create the functions that will display and hide the infoWindow
@@ -269,13 +271,13 @@ function showMarkers(){
     for (let i = 0; i < markers.length; i++){
         markers[i].setMap(map);
         bounds.extend(markers[i].position);
-    }
+    };
     map.fitBounds(bounds);    
 };
 
 function hideMarkers(){
     for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
+        markers[i].setMap(null)
       }
 };
 
