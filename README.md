@@ -18,10 +18,8 @@ start index.html
 
 ## Live Version
 
-```
 https://nahomtefera.github.io/sfcoffeeshopfinder.github.io/index.html
 
-```
 
 ## Built With
 
