@@ -38,7 +38,7 @@ let ViewModel = function appViewModel() {
                         address: currentItemAddress,
                         id: currentItemId,
                         rating: currentItemRating,
-                        time: currentIsOpen
+                        time: currentIsOpen,
                     }
                 );
                 // this will show the markers that match the input
@@ -82,7 +82,7 @@ let ViewModel = function appViewModel() {
                 markers[i].setVisible(true);
                 // animation to make the marker bounce when we click in he list
                 markers[i].setAnimation(google.maps.Animation.BOUNCE);
-                stopMarkerAnimation(markers[i]);
+                stopMarkerAnimation(markers[i], 2000);
                 populateInfoWindow(markers[i]);
             }
         }

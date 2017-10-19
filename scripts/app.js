@@ -20,7 +20,7 @@
 */
 
 //GLOBAL variables `map`, `polygon` and `markers` 
-let map, markers = [], polygon = null;
+let map, markers = [], polygon = null, lastMarker;
 
 
 // Map error handler
@@ -163,7 +163,8 @@ function initMap(){
             title: title,
             address:address,
             animation: google.maps.Animation.DROP,
-            id: id
+            id: id,
+            icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
         });
         // push every marker to an array
         markers.push(marker);
@@ -171,12 +172,13 @@ function initMap(){
         marker.addListener('click', createMarkerPopup);
     }
 
-    function createMarkerPopup(){
+    function createMarkerPopup(){      
         // the marker will first bounce
         this.setAnimation(google.maps.Animation.BOUNCE);
-        stopMarkerAnimation(this);
+        stopMarkerAnimation(this, 2000);
         // create the infowindow
         populateInfoWindow(this);
+        
     }
     //
     // 11. We are also going to create a functino to draw in our map `drawingManager()`
@@ -226,10 +228,12 @@ function initMap(){
 let getStreetView = function(){};
 
 function populateInfoWindow(marker){
-    //New Code 
+         
+    // Close previous popup
     if(lastPopupWindow){
         lastPopupWindow.close();
     }
+    
     infoWindow = new google.maps.InfoWindow();
     
     // Check to make sure the infowindow is not already opened on this marker.
@@ -314,9 +318,9 @@ function searchWithinPolygon() {
     }
 }
 
-function stopMarkerAnimation(marker) {
-    setTimeout(function () {
-        marker.setAnimation(null);
-    }, 2000);
+function stopMarkerAnimation(marker, timeout) {
+    window.setTimeout(function () {
+        marker.setAnimation(null);        
+    }, timeout);
 }
 
