@@ -1,8 +1,7 @@
 let searchBox = document.getElementById("search-box"); // element where the user will start the search
-let ulList = document.getElementById("list-ul");
 let lastOpenedInfoWindow; // we use this variable as a flag to know wich marker was opened
 
-let viewModel = function appViewModel() {
+let ViewModel = function appViewModel() {
     let self = this;
     
     this.itemsToRender = ko.observableArray();

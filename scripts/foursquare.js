@@ -20,7 +20,7 @@ $.ajax({
 }).then(function(result){
     items = result.response.groups[0].items;
     // Activate Knockout.js
-    ko.applyBindings(new viewModel());
+    ko.applyBindings(new ViewModel());
 
 }).then(function(items){
     initMap();
