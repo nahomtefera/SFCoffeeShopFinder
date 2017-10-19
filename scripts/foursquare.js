@@ -15,7 +15,6 @@ $.ajax({
 
     success: function (data) {
         var result = data.response;
-        // console.log(data.response.groups[0].items);
     }
 }).then(function(result){
     items = result.response.groups[0].items;
@@ -26,6 +25,6 @@ $.ajax({
     initMap();
 }).fail(function(error){
     console.log(error);
-    alert(error);
+    alert("There was an issue with " + "\nl" + error);
 });
 

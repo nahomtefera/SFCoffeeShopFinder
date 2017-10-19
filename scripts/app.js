@@ -22,12 +22,6 @@
 //GLOBAL variables `map`, `polygon` and `markers` 
 let map, markers = [], polygon = null, lastMarker;
 
-
-// Map error handler
-function mapError() { 
-    console.log()  
-}
-
 function initMap(){
     let style = [
         {

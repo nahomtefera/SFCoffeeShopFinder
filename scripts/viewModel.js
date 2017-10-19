@@ -20,7 +20,13 @@ let ViewModel = function appViewModel() {
         // self.listedItems([]);
         self.listedItems([]);
         let noMatches = 0;
-        
+
+        //Close any popup window that might be open
+        if(lastPopupWindow){
+            lastPopupWindow.close();
+        }
+
+
         for(let i = 0; i < self.itemsToRender().length; i++) {
             // we will assign this values to the markers
             let currentItem = self.itemsToRender()[i];
