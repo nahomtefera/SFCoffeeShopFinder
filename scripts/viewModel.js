@@ -48,7 +48,11 @@ let ViewModel = function appViewModel() {
                 if(noMatches === self.itemsToRender().length){
                     self.listedItems([
                         {
-                            name: "No Matches"
+                            name: "",
+                            address: "",
+                            id: "",
+                            rating: "",
+                            time: ""
                         }
                     ]);
                 }
