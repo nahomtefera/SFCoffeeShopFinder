@@ -74,19 +74,35 @@ let ViewModel = function appViewModel() {
 
     // when a new infoWindow opens the previous one will clsoe
     this.openMarker = function() {
-
-        // newPopUpWindow = new google.maps.InfoWindow()        
-
         if(lastPopupWindow){
             lastPopupWindow.close();
         }
         for (let i = 0; i < markers.length; i++){            
             if(this.id === markers[i].id){
                 markers[i].setVisible(true);
+                // animation to make the marker bounce when we click in he list
+                markers[i].setAnimation(google.maps.Animation.BOUNCE);
+                stopMarkerAnimation(markers[i]);
                 populateInfoWindow(markers[i]);
             }
         }
-}
+    }
 
-    // lastPopupWindow = this;
+    this.showMarkers = function(){
+        var bounds = new google.maps.LatLngBounds();
+        
+        for (let i = 0; i < markers.length; i++){
+            markers[i].setVisible(true);
+            bounds.extend(markers[i].position);
+        }
+        map.fitBounds(bounds);    
+    }
+    
+    this.hideMarkers = function(){
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setVisible(false);
+          }
+    }
+    
+
 }

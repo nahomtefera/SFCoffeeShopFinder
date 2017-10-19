@@ -25,8 +25,8 @@
                     <input data-bind="textInput: filter()" type="text" id="search-box" placeholder=" .. Search SF Coffe Shops">
                 </div>
                 <div id="show-hide-markers-container">
-                    <div class="show-hide" id="show-markers">Display All</div>
-                    <div class="show-hide" id="hide-markers">Hide All</div>
+                    <div class="show-hide" id="hide-markers" data-bind="click: hideMarkers">Hide All</div>
+                    <div class="show-hide" id="show-markers" data-bind="click: showMarkers">Display All</div>
                 </div>
                 <div id="foursquare-mention">
                     <a target="blank" href="https://foursquare.com">
@@ -74,7 +74,9 @@
         
         <!-- Google Maps API call -->
         <script async defer
-            src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyDq6WjLcfMSZ-bWYxkRr-EZ8NbcioNfzYE&v=3">
+            src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyDq6WjLcfMSZ-bWYxkRr-EZ8NbcioNfzYE&v=3"
+            onerror = "mapError()"
+        >
         </script>
     </body>
     

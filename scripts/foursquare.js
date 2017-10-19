@@ -26,5 +26,6 @@ $.ajax({
     initMap();
 }).fail(function(error){
     console.log(error);
+    alert(error);
 });
 

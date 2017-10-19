@@ -21,6 +21,13 @@
 
 //GLOBAL variables `map`, `polygon` and `markers` 
 let map, markers = [], polygon = null;
+
+
+// Map error handler
+function mapError() { 
+    console.log()  
+}
+
 function initMap(){
     let style = [
         {
@@ -165,6 +172,10 @@ function initMap(){
     }
 
     function createMarkerPopup(){
+        // the marker will first bounce
+        this.setAnimation(google.maps.Animation.BOUNCE);
+        stopMarkerAnimation(this);
+        // create the infowindow
         populateInfoWindow(this);
     }
     //
@@ -183,8 +194,8 @@ function initMap(){
     });
 
     // 7. Now we will add another event listener to the button `show-marker` and `hide-marker`
-    document.getElementById("show-markers").addEventListener('click', showMarkers);
-    document.getElementById("hide-markers").addEventListener('click', hideMarkers);
+    // This is know handeled by knockout event binders
+    
     // document.getElementById('toggle-drawing').addEventListener('click', function() {
     //     toggleDrawing(drawingManager);
     //   });
@@ -277,23 +288,6 @@ function initializeMarkers(){
     }
     map.fitBounds(bounds);    
 }
-
-function showMarkers(){
-    var bounds = new google.maps.LatLngBounds();
-    
-    for (let i = 0; i < markers.length; i++){
-        markers[i].setVisible(true);
-        bounds.extend(markers[i].position);
-    }
-    map.fitBounds(bounds);    
-}
-
-function hideMarkers(){
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setVisible(false);
-      }
-}
-
 // Function to toggle Drawing functionality
 function toggleDrawing(drawingManager){
     if (drawingManager.map) {
@@ -318,5 +312,11 @@ function searchWithinPolygon() {
         markers[i].setMap(null);
         }
     }
+}
+
+function stopMarkerAnimation(marker) {
+    setTimeout(function () {
+        marker.setAnimation(null);
+    }, 2000);
 }
 
