@@ -29,7 +29,7 @@ let ViewModel = function appViewModel() {
             let currentItemRating = currentItem.venue.rating;
             let currentIsOpen = currentItem.venue.hours.status;
             // if the value of the input matches 
-            // the name of the business or the address we will show that business
+            // the name of the business or the address we will show that business            
             if(currentItemName.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 || (currentItemAddress) && currentItemAddress.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 ){
                 self.listedItems.push(
                     {
@@ -40,10 +40,18 @@ let ViewModel = function appViewModel() {
                         time: currentIsOpen
                     }
                 );
+                // this will show the markers that match the input
+                if(typeof markers[i] !== "undefined"){
+                    markers[i].setVisible(true);
+                }
             } else {
+
+                // this will hide the markers that don't match with the search input
+                markers[i].setVisible(false);
                 // if the value of the search box doesn't match 
                 // the name or address of our businesses it will display 'no matches'
                 noMatches++;
+                
                 
                 if(noMatches === self.itemsToRender().length){
                     self.listedItems([

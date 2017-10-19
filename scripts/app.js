@@ -216,6 +216,7 @@ function initMap(){
         polygon.getPath().addListener('insert_at', searchWithinPolygon);
     });
     
+    initializeMarkers();
 }
 // 8. Create the function that will create the infoWindow
 let getStreetView = function(){};
@@ -267,7 +268,7 @@ function populateInfoWindow(marker, infoWindow){
 }
 // 9. Create the functions that will display and hide the infoWindow
 // This function will loop through every marker and display them all
-function showMarkers(){
+function initializeMarkers(){
     var bounds = new google.maps.LatLngBounds();
     
     for (let i = 0; i < markers.length; i++){
@@ -277,9 +278,19 @@ function showMarkers(){
     map.fitBounds(bounds);    
 }
 
+function showMarkers(){
+    var bounds = new google.maps.LatLngBounds();
+    
+    for (let i = 0; i < markers.length; i++){
+        markers[i].setVisible(true);
+        bounds.extend(markers[i].position);
+    }
+    map.fitBounds(bounds);    
+}
+
 function hideMarkers(){
     for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
+        markers[i].setVisible(false);
       }
 }
 
@@ -308,3 +319,4 @@ function searchWithinPolygon() {
         }
     }
 }
+
