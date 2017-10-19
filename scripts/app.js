@@ -136,7 +136,7 @@ function initMap(){
 
     // 4. Create the variable locations and push the location that are going to be rendered.    
     // 5. Create a variable that will be the popout info window
-    let popupInfoWindow = new google.maps.InfoWindow();
+    let popupInfoWindow;
     let lastPopupInfoWindow;
 
     // 6. Now we will create a new array inside a for loopand we will push inside the locations we want to render with markers
@@ -165,14 +165,7 @@ function initMap(){
     }
 
     function createMarkerPopup(){
-        if(lastPopupInfoWindow){
-            lastPopupInfoWindow().close();
-        }
-        if(newPopUpWindow){
-            lastPopupWindow().close();
-        }
-        populateInfoWindow(this, popupInfoWindow);
-        lastPopupInfoWindow = populateInfoWindow(this, popupInfoWindow);
+        populateInfoWindow(this);
     }
     //
     // 11. We are also going to create a functino to draw in our map `drawingManager()`
@@ -221,7 +214,13 @@ function initMap(){
 // 8. Create the function that will create the infoWindow
 let getStreetView = function(){};
 
-function populateInfoWindow(marker, infoWindow){
+function populateInfoWindow(marker){
+    //New Code 
+    if(lastPopupWindow){
+        lastPopupWindow.close();
+    }
+    infoWindow = new google.maps.InfoWindow();
+    
     // Check to make sure the infowindow is not already opened on this marker.
     if (infoWindow.marker != marker) {
         infoWindow.marker = marker;
@@ -263,6 +262,7 @@ function populateInfoWindow(marker, infoWindow){
         streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
 
         // Open InfoWindow in the correct marker
+        lastPopupWindow = infoWindow;
         infoWindow.open(map, marker);
     }
 }

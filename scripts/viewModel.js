@@ -1,5 +1,6 @@
 let searchBox = document.getElementById("search-box"); // element where the user will start the search
 let lastOpenedInfoWindow; // we use this variable as a flag to know wich marker was opened
+let lastPopupWindow;
 
 let ViewModel = function appViewModel() {
     let self = this;
@@ -69,21 +70,23 @@ let ViewModel = function appViewModel() {
         }
     };
 
-let lastPopupWindow;
+    let newPopUpWindow;
 
-let newPopUpWindow = new google.maps.InfoWindow()
     // when a new infoWindow opens the previous one will clsoe
     this.openMarker = function() {
-        if(lastPopupWindow) {
-            lastPopupWindow().close();
-        }
 
-        for (let i = 0; i < markers.length; i++){
+        // newPopUpWindow = new google.maps.InfoWindow()        
+
+        if(lastPopupWindow){
+            lastPopupWindow.close();
+        }
+        for (let i = 0; i < markers.length; i++){            
             if(this.id === markers[i].id){
-                markers[i].setMap(map);
-                populateInfoWindow(markers[i],  newPopUpWindow);
-                lastPopupWindow = populateInfoWindow(markers[i], newPopUpWindow);
+                markers[i].setVisible(true);
+                populateInfoWindow(markers[i]);
             }
         }
-    }
+}
+
+    // lastPopupWindow = this;
 }
