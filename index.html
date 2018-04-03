@@ -57,15 +57,31 @@
         </div>
 
         <!-- Scripts -->
-        <!-- Main script --><script src="scripts/app.js"></script>
-        <!-- FourSquare --><script src="scripts/foursquare.js"></script>
-        <!-- Knockoutjs --><script src="scripts/knockout.js"></script> 
-        <!-- Knockout ViewModel --><script src="scripts/viewModel.js"></script> 
-        <!-- Google Maps API call -->
+        <script>
+            let windowHeight = window.innerHeight + "px";
+            if(window.innerWidth > 768){
+                document.getElementById("map").style.height = windowHeight;
+            }
+            $(window).resize(function(){
+                if(window.innerWidth > 768){
+                 document.getElementById("map").style.height = windowHeight;
+                } 
+                // else {
+                // document.getElementById("map-container").style.height = "45%";
+                // }
+            });
+        </script>
+        <!-- Google Maps Call -->
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyDq6WjLcfMSZ-bWYxkRr-EZ8NbcioNfzYE&v=3"
             onerror="googleError()">
         </script>
+        <!-- Main script --><script async src="scripts/app.js"></script>
+        <!-- FourSquare --><script src="scripts/foursquare.js"></script>
+        <!-- Knockoutjs --><script src="scripts/knockout.js"></script> 
+        <!-- Knockout ViewModel --><script src="scripts/viewModel.js"></script> 
+        <!-- Google Maps API call -->
+
 
     </body>
     
